@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const LockersSchema = mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
-  },
   codigo: {
     type: String,
     required: true,
@@ -15,7 +11,7 @@ const LockersSchema = mongoose.Schema({
   },
   ativo: {
     type: Boolean,
-    required: true,
+    required: false,
     default: false,
   },
 });
