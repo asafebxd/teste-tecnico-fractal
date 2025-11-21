@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Conecta ao MongoDB Cluster
 const connect = () => {
   mongoose
     .connect(

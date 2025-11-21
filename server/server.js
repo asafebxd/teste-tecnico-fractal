@@ -6,15 +6,19 @@ import database from "./infra/database.js";
 
 configDotenv({ path: "./.env" });
 
+//Criar express app
 const app = express();
 
+//Interpreta JSON e chama Router
 app.use(express.json());
 app.use("/api/v1", router);
 
 const port = process.env.PORT;
 
+//Inicia o servidor
 app.listen(port, () => {
   console.log(`App listening on PORT: ${port}`);
 });
 
+//Chama conexção com cluster
 database.connect();

@@ -1,5 +1,6 @@
 import Locker from "../models/schema.js";
 
+//Busca todos os items da tabela Locker
 const getHandler = async (req, res) => {
   try {
     const lockers = await Locker.find({});
@@ -14,6 +15,7 @@ const getHandler = async (req, res) => {
   }
 };
 
+//Cria novo item na tabela Locker com dados do corpo da requisição
 const postHandler = async (req, res) => {
   console.log(req.body);
 
@@ -34,6 +36,7 @@ const postHandler = async (req, res) => {
   }
 };
 
+// Busca item por ID e edita com dados do corpo da requisição
 const patchHandler = async (req, res) => {
   const { id } = req.params;
 
@@ -62,6 +65,7 @@ const patchHandler = async (req, res) => {
   }
 };
 
+// Busca item por ID e deleta
 const deleteHander = async (req, res) => {
   const { id } = req.params;
 

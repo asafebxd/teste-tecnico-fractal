@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Cria Schema da tabela
 const LockersSchema = mongoose.Schema({
   codigo: {
     type: String,
