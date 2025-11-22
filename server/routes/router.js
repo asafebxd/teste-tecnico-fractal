@@ -10,6 +10,9 @@ router.get("/lockers", locker.getHandler);
 // Rota para criar novo item
 router.post("/locker", locker.postHandler);
 
+//Rota para econtrar item por ID
+router.get("/locker/:id", locker.getByIdHandler);
+
 //Rota para deletar item por ID
 router.delete("/locker/:id", locker.deleteHander);
 

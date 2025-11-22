@@ -15,15 +15,32 @@ const getHandler = async (req, res) => {
   }
 };
 
+//Busca item da tabela Locker por Id
+const getByIdHandler = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const locker = await Locker.findById({ id });
+
+    if (!locker) {
+      return res.status(404).json({ message: "Locker not found" });
+    }
+
+    return res.status(200).json(locker);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
 //Cria novo item na tabela Locker com dados do corpo da requisição
 const postHandler = async (req, res) => {
-  console.log(req.body);
+  const lockerForm = req.body?.form;
 
   try {
     const locker = await Locker.create({
-      codigo: req.body?.codigo,
-      ecp: req.body?.ecp,
-      ativo: req.body?.ativo,
+      codigo: lockerForm?.codigo,
+      ecp: lockerForm?.ecp,
+      ativo: lockerForm?.ativo,
     });
 
     if (!locker) {
@@ -38,16 +55,18 @@ const postHandler = async (req, res) => {
 
 // Busca item por ID e edita com dados do corpo da requisição
 const patchHandler = async (req, res) => {
-  const { id } = req.params;
+  const id = req.params.id;
+
+  const lockerForm = req.body?.form;
 
   try {
     const locker = await Locker.findByIdAndUpdate(
       id,
       {
         $set: {
-          codigo: req.body.codigo,
-          ecp: req.body.ecp,
-          ativo: req.body.ativo,
+          codigo: lockerForm.codigo,
+          ecp: lockerForm.ecp,
+          ativo: lockerForm.ativo,
         },
       },
       {
@@ -67,7 +86,7 @@ const patchHandler = async (req, res) => {
 
 // Busca item por ID e deleta
 const deleteHander = async (req, res) => {
-  const { id } = req.params;
+  const id = req.params.id;
 
   try {
     const locker = await Locker.findByIdAndDelete(id);
@@ -86,6 +105,7 @@ const deleteHander = async (req, res) => {
 
 const locker = {
   getHandler,
+  getByIdHandler,
   postHandler,
   deleteHander,
   patchHandler,
