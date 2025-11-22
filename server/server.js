@@ -1,5 +1,6 @@
 import express from "express";
 import router from "./routes/router.js";
+import cors from "cors";
 
 import { configDotenv } from "dotenv";
 import database from "./infra/database.js";
@@ -11,6 +12,7 @@ const app = express();
 
 //Interpreta JSON e chama Router
 app.use(express.json());
+app.use(cors());
 app.use("/api/v1", router);
 
 const port = process.env.PORT;
