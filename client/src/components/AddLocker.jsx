@@ -96,6 +96,15 @@ function AddLocker() {
           >
             Salvar
           </button>
+
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="w-full py-2 bg-slate-700 text-slate-200 rounded-lg font-medium
+             hover:bg-slate-600 transition mt-2"
+          >
+            Voltar
+          </button>
         </form>
       </div>
     </div>
