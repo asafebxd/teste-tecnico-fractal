@@ -8,7 +8,7 @@ Projeto full stack para teste tecnico, o App permite criar, editar, deletar,visu
 
 Variáveis de ambiente
 
-em ./server/.env adicione variáveis:
+Crie no diretório ./server/ um arquivo '.env' e as adicione variáveis:
 
 USER=seu-usuario
 PASSWORD=sua-senha

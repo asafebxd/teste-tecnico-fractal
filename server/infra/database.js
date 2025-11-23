@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const connect = () => {
   mongoose
     .connect(
-      `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@teste-tecnico.po2ycmw.mongodb.net/?appName=teste-tecnico`
+      `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@teste-tecnico.ukyn4z8.mongodb.net/?appName=teste-tecnico`
     )
     .then(() => {
       console.log("Connected to database");
