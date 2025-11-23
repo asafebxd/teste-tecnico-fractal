@@ -20,7 +20,9 @@ function EditLocker() {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        form,
+        codigo: form.codigo,
+        ecp: form.ecp,
+        ativo: form.ativo,
       }),
     });
 
@@ -47,7 +49,7 @@ function EditLocker() {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 flex items-center justify-center px-4">
       <div className="w-full max-w-lg bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-xl">
-        <h1 className="text-2xl font-semibold mb-6">Adicionar Locker</h1>
+        <h1 className="text-2xl font-semibold mb-6">Editar locre</h1>
 
         <form onSubmit={editForm} className="space-y-6">
           <div>
@@ -80,7 +82,7 @@ function EditLocker() {
             <label className="block text-sm mb-1">Ativo</label>
             <select
               name="ativo"
-              value={String(form.ativo)}
+              value={form.ativo}
               onChange={handleChange}
               className="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-sm
                          focus:outline-none focus:border-emerald-500"
