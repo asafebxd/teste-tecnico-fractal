@@ -1,6 +1,6 @@
 describe("POST /api/v1/locker", () => {
   describe("New locker", () => {
-    test("With invalid types", async () => {
+    test("With invalid 'codigo' type", async () => {
       const res = await fetch("http://localhost:8080/api/v1/locker", {
         method: "POST",
         headers: {
@@ -8,6 +8,50 @@ describe("POST /api/v1/locker", () => {
         },
         body: JSON.stringify({
           codigo: 123,
+          ecp: "teste",
+          ativo: false,
+        }),
+      });
+
+      expect(res.status).toBe(500);
+
+      const resBody = await res.json();
+
+      expect(resBody.message).toContain(
+        `Locker validation failed: codigo: Cast to string failed for value`
+      );
+    });
+
+    test("With invalid 'ecp' type", async () => {
+      const res = await fetch("http://localhost:8080/api/v1/locker", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          codigo: "teste",
+          ecp: 123,
+          ativo: false,
+        }),
+      });
+
+      expect(res.status).toBe(500);
+
+      const resBody = await res.json();
+
+      expect(resBody.message).toContain(
+        `Locker validation failed: ecp: Cast to string failed for value`
+      );
+    });
+
+    test("With invalid 'ativo' tipe", async () => {
+      const res = await fetch("http://localhost:8080/api/v1/locker", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          codigo: "teste",
           ecp: "teste",
           ativo: "falso",
         }),
