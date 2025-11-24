@@ -20,7 +20,7 @@ const getByIdHandler = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const locker = await Locker.findById({ id });
+    const locker = await Locker.findById(id);
 
     if (!locker) {
       return res.status(404).json({ message: "Locker not found" });

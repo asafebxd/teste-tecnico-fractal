@@ -1,7 +1,7 @@
 describe("POST /api/v1/locker", () => {
   describe("New locker", () => {
     test("With invalid 'codigo' type", async () => {
-      const res = await fetch("http://localhost:8080/api/v1/locker", {
+      const res = await fetch("http://localhost:5000/api/v1/locker", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +23,7 @@ describe("POST /api/v1/locker", () => {
     });
 
     test("With invalid 'ecp' type", async () => {
-      const res = await fetch("http://localhost:8080/api/v1/locker", {
+      const res = await fetch("http://localhost:5000/api/v1/locker", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ describe("POST /api/v1/locker", () => {
     });
 
     test("With invalid 'ativo' tipe", async () => {
-      const res = await fetch("http://localhost:8080/api/v1/locker", {
+      const res = await fetch("http://localhost:5000/api/v1/locker", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ describe("POST /api/v1/locker", () => {
     });
 
     test("With valid types", async () => {
-      const res = await fetch("http://localhost:8080/api/v1/locker", {
+      const res = await fetch("http://localhost:5000/api/v1/locker", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ describe("POST /api/v1/locker", () => {
       const id = resBody._id;
 
       const deleteRes = await fetch(
-        `http://localhost:8080/api/v1/locker/${id}`,
+        `http://localhost:5000/api/v1/locker/${id}`,
         {
           method: "DELETE",
         }

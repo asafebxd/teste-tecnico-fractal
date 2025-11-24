@@ -9,7 +9,7 @@ function Home() {
   const [filteredLockers, setFilteredLockers] = useState([]);
 
   const loadData = async () => {
-    const res = await fetch(`http://localhost:8080/api/v1/lockers`);
+    const res = await fetch(`http://localhost:5000/api/v1/lockers`);
 
     const resBody = await res.json();
 
@@ -28,7 +28,7 @@ function Home() {
   }, []);
 
   const deleteLocker = async (id) => {
-    await fetch(`http://localhost:8080/api/v1/locker/${id}`, {
+    await fetch(`http://localhost:5000/api/v1/locker/${id}`, {
       method: "DELETE",
     });
 

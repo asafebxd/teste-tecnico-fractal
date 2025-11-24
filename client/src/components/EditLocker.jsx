@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
@@ -11,12 +11,32 @@ function EditLocker() {
 
   const { id } = useParams();
 
+  const loadLockerData = async () => {
+    const res = await fetch(`http://localhost:5000/api/v1/locker/${id}`);
+
+    const resBody = await res.json();
+
+    setForm({
+      codigo: resBody.codigo,
+      ecp: resBody.ecp,
+      ativo: resBody.ativo,
+    });
+  };
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetch = async () => {
+      await loadLockerData();
+    };
+
+    fetch();
+  }, []);
 
   const editForm = async (e) => {
     e.preventDefault();
 
-    await fetch(`http://localhost:8080/api/v1/locker/${id}`, {
+    await fetch(`http://localhost:5000/api/v1/locker/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

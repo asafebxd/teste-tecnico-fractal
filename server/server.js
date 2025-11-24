@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/v1", router);
 
-const port = 8080;
+const port = 5000;
 
 //Inicia o servidor
 app.listen(port, () => {
