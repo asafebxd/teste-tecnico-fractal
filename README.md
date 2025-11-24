@@ -6,12 +6,39 @@ Descrição do Projeto
 
 Projeto full stack para teste tecnico, o App permite criar, editar, deletar,visualizar os lacres criados e filtrar lacres por valores: codigo e ecp
 
-Variáveis de ambiente
+Conectando ao Cluster:
 
-Crie no diretório ./server/ um arquivo '.env' e as adicione variáveis:
+Crie uma conta em: https://www.mongodb.com/cloud/atlas/register
 
-USER=seu-usuario
-PASSWORD=sua-senha
+Crie seu Cluster clicando no botão 'Create +'
+
+![Cluster create](image.png)
+
+Selecione o plano desejado, escolha o nome do seu Cluster e clique em 'Create deployment'
+
+![Deploy cluster](image-1.png)
+
+Defina o nome e senha do seu usuario
+
+![Create user](image-2.png)
+
+Agora novamente na aba Clusters clique em 'connect'
+
+![Cluster connect](image-3.png)
+
+Agora clique em 'Drivers' e copie a connection string como essa: mongodb+srv://<db_username>:<db_password>@cluster0.lmc5wzb.mongodb.net/?appName=Cluster0
+
+Substitua <db_username> pelo seu usuario e <db_password> pela sua senha respectivamente
+
+![Cluster drivers](image-4.png)
+
+![Cluster connection string](image-5.png)
+
+No arquivo ./server/infra/database.js substitua a string dentro de mongoose.connect() com a string que você copiou e coloque suas credenciais
+
+![Database.js](image-6.png)
+
+Pronto seu setup para conectar ao banco de dados está completo, agora instale as dependências do projeto!
 
 Instalando dependencias
 
